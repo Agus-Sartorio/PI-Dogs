@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap');
+
+.contenedor{
+    background-image: url('../../fondos/landing.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display:flex;
+    flex-direction: column;
+}
+
+.titulo{
+    font-family: 'Nunito', sans-serif;
+    color: white;
+}
+
+.boton{
+    border: 1px solid white;
+    /* border-style: none; */
+    border-radius: 7px;
+    padding: 4px 12px;
+    background-color: rgba(56, 52, 52, 0.76);
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+    color: white;
+}
+
+.boton:hover{
+    cursor: pointer;
+    background-color:black;
+    
+}

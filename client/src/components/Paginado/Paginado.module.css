@@ -1,0 +1,25 @@
+.nav{
+    display:flex;
+    flex-direction:row;  
+    text-decoration: none;
+    justify-content:space-evenly;
+    border-width: 10px;
+}
+
+.p{
+    display:inline-block;
+    margin-left: 15px;
+    border-width: 10px;
+}
+
+.a{
+    border: 0.2px solid rgb(179, 179, 179);
+    padding: 4px 9px;
+    border-radius:4px;
+    color:rgb(139, 139, 139);
+    background: rgba(0, 0, 0, 0.856);
+}
+
+.a:hover{
+    cursor: pointer;
+}
