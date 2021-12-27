@@ -37,16 +37,16 @@ export default function DogDetail({ dogDetail, temperament, setShow }) {
                 </div>
                 <div className={styles.info}>
                     <h1>{name}</h1>
-                    <h2>Temperaments:</h2>
+                    <h2>💪 Temperaments:</h2>
                     <p>{temperament.map(t => <span>{t.trim()}</span>)}</p>
 
-                    <h2>Life span: </h2>
+                    <h2>⌛ Life span: </h2>
                     <p>{life_span} years</p>
 
-                    <h2>Weight: </h2>
+                    <h2>⚖️ Weight: </h2>
                     <p>{weight} kg</p>
 
-                    <h2>Height: </h2>
+                    <h2>↕️ Height: </h2>
                     <p>{height} cm</p>
                 </div>
             </div>

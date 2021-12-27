@@ -21,7 +21,7 @@ export default function Home() {
     const pagesVisited = page * breedsPerPage;
     const displayBreeds = allDogs.slice(pagesVisited, pagesVisited + breedsPerPage).map(
         (d) => {
-            
+
             return <Card dogDetail={d} key={d.id} />
         }
     )
@@ -61,10 +61,10 @@ export default function Home() {
         setOrden(`Ordenado ${e.target.value}`);
     }
 
-         const pageCount = Math.ceil(allDogs.length / breedsPerPage);
-        const changePage = ({ selected }) => {
-            setPage(selected)
-        } 
+    const pageCount = Math.ceil(allDogs.length / breedsPerPage);
+    const changePage = ({ selected }) => {
+        setPage(selected)
+    }
 
     return (
         <div>
@@ -80,48 +80,54 @@ export default function Home() {
             <div className={styles.div2}>
                 <SearchBar />
                 <div className={styles.fijo}>
-                <div className={styles.temperamentos}>
-                    <p className={styles.filtro}>Filter By Origin</p>
-                    <select className={styles.select} onChange={e => handleCreated(e)}>
-                        <option value="All">Todos</option>
-                        <option value="created">Creados</option>
-                        <option value="api">Existente</option>
-                    </select>
-                </div>
-                <div className={styles.temperamentos}>
-                    <p className={styles.filtro}>Sort By</p>
-                    <select className={styles.select} onChange={e => handleSort(e)}>
-                        <option value="asc">Ascendente</option>
-                        <option value="desc">Descendente</option>
-                    </select>
-                    <select className={styles.select2} onChange={e => handleSortWeight(e)}>
-                        <option value="asc">Peso ascendente</option>
-                        <option value="desc">Peso descendente</option>
-                    </select>
-                    <button className={styles.clear} onClick={handleClick}>Clear</button>
-                </div>
+                    <div className={styles.temperamentos}>
+                        <p className={styles.filtro}>Filter By Origin</p>
+                        <select className={styles.select} onChange={e => handleCreated(e)}>
+                            <option value="All">All</option>
+                            <option value="created">Created</option>
+                            <option value="api">Existing</option>
+                        </select>
+                    </div>
+                    <div className={styles.temperamentos}>
+                        <p className={styles.filtro}>Sort By</p>
+                        <select className={styles.select} onChange={e => handleSort(e)}>
+                            <option value="asc">Name asc</option>
+                            <option value="desc">name desc</option>
+                        </select>
+                        <select className={styles.select2} onChange={e => handleSortWeight(e)}>
+                            <option value="asc">Weight asc</option>
+                            <option value="desc">Weight desc</option>
+                        </select>
+                        <button className={styles.clear} onClick={handleClick}>Clear</button>
+                    </div>
 
-                <div className={styles.temperamentos}>
-                    <p className={styles.filtro}>Filter By Temperament</p>
-                    <select className={styles.select} onChange={e => handleTemperament(e)}>
-                        <option value="all">Temperaments</option>
-                        {allTemperaments && allTemperaments.map(el => {
-                            return <option key={el.id} value={el.name}>{el.name}</option>
-                        })}
-                    </select>
-                    <button className={styles.clear} onClick={handleClick}>Clear Temperament</button>
-                </div>
+                    <div className={styles.temperamentos}>
+                        <p className={styles.filtro}>Filter By Temperament</p>
+                        <select className={styles.select} onChange={e => handleTemperament(e)}>
+                            <option value="all">Temperaments</option>
+                            {allTemperaments && allTemperaments.map(el => {
+                                return <option key={el.id} value={el.name}>{el.name}</option>
+                            })}
+                        </select>
+                        <button className={styles.clear} onClick={handleClick}>Clear Temperament</button>
+                    </div>
                 </div>
                 <div className={styles.perros}>
                     {allDogs.length > 0 && displayBreeds}
                 </div>
             </div>
-            <ReactPaginate
-                previousLabel={'Previous'}
-                nextLabel={'Next'}
-                pageCount={pageCount}
-                onPageChange={changePage}
-            />
+            {allDogs.length > 0 && 
+            <div className={styles.pagination}>
+                <ReactPaginate
+                    previousLabel={'Previous'}
+                    nextLabel={'Next'}
+                    pageCount={pageCount}
+                    onPageChange={changePage}
+                    containerClassName={styles.paginationButtons}
+                    previousLinkClassName={styles.previousButton}
+                    activeClassName={styles.paginationActive}
+                />
+            </div>}
         </div>
     )
 }

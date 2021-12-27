@@ -8,8 +8,6 @@
 }
 
 .form{
-/*     display: flex;
-    align-items: center; */
     background-color: white;
     width:fit-content;
     border-radius:20px;
@@ -17,7 +15,7 @@
 }
 
 .form input{
-    padding:8px 12px;
+    padding:10px 12px;
     font-size:16px;
     color:#000;
     outline: none;

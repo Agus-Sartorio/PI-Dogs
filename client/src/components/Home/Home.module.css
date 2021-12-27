@@ -106,3 +106,35 @@
     background-color:black;
     /* font-weight: bold; */
 }
+
+.paginationButtons{
+    width: 80%;
+    height: 40px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.paginationButtons a{
+    padding: 10px;
+    margin: 8px;
+    border-radius: 5px;
+    border: 1px solid #32de84;
+    cursor: pointer;
+    transition: background-color 0.5s;  
+}
+
+.paginationButtons a:hover{
+    background-color: #32de84;
+}
+
+.paginationActive a{
+    background-color: #32de84;
+}
+
+.pagination{
+    display: flex;
+    align-items: center;
+    margin-left:350px
+}
