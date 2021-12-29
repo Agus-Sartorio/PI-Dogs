@@ -142,3 +142,30 @@
 .dogError{
     border-radius: 5px;
 }
+
+.load{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+.load img{
+    width: 100px;
+    height: 50px;
+    animation: spinning 4s infinite linear;
+}
+
+@keyframes spinning{
+    from{
+        transform: rotate(0deg);
+    } to{
+        transform: rotate(360deg);
+    }
+}
+
+.load p{
+    font-size: 20px;
+    font-weight: bold;
+}

@@ -8,6 +8,7 @@ import Card from "../Card/Card"
 import Paginado from '../Paginado/Paginado';
 import SearchBar from '../SearchBar/SearchBar';
 import dogError from '../../fondos/fire.png';
+import loader from '../../fondos/loader.png'
 import styles from './Home.module.css'
 
 export default function Home() {
@@ -114,6 +115,13 @@ export default function Home() {
                         <button className={styles.clear} onClick={handleClick}>Clear Temperament</button>
                     </div>
                 </div>
+                {
+                    !allDogs.length && !allDogsCopy.length  && 
+                    <div className={styles.load}>
+                        <img src={loader} alt="" />
+                        <p>Loading...</p>
+                    </div>
+                }
                 {
                     !allDogs.length && allDogsCopy.length > 0 && 
                     <div>
