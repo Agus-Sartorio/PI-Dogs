@@ -4,6 +4,7 @@ import LandingPage from './components/LandingPage/LandingPage.jsx';
 import Home from './components/Home/Home.jsx';
 import CreateDog  from './components/CreateDog/CreateDog';
 import DogDetail from './components/DogDetail/DogDetail';
+import RutaCualquiera from './components/RutaCualquiera/RutaCualquiera';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/home' element={<Home/>}/>
         <Route path='/home/dog' element={<CreateDog/>}/>
         <Route path='/home/dogs/:id' element={<DogDetail/>}/>
+        <Route path="*" element={<RutaCualquiera/>}/>
       </Routes>
     </div>
     </BrowserRouter>

@@ -7,12 +7,14 @@ import { getDogs, getTemperaments, filterDogsByTemperament, filterCreated, order
 import Card from "../Card/Card"
 import Paginado from '../Paginado/Paginado';
 import SearchBar from '../SearchBar/SearchBar';
+import dogError from '../../fondos/fire.png';
 import styles from './Home.module.css'
 
 export default function Home() {
 
     const dispatch = useDispatch();
     const allDogs = useSelector((state) => state.dogs);
+    const allDogsCopy = useSelector((state) => state.dogsCopy)
     console.log(allDogs);
     const allTemperaments = useSelector((state) => state.temperament);
     const [orden, setOrden] = useState();
@@ -112,6 +114,13 @@ export default function Home() {
                         <button className={styles.clear} onClick={handleClick}>Clear Temperament</button>
                     </div>
                 </div>
+                {
+                    !allDogs.length && allDogsCopy.length > 0 && 
+                    <div>
+                        <h2>There is no breed to show \ (o_o) / </h2>
+                        <img className={styles.dogError} src={dogError} alt="" />
+                    </div>
+                }
                 <div className={styles.perros}>
                     {allDogs.length > 0 && displayBreeds}
                 </div>

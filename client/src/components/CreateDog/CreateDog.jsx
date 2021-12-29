@@ -8,6 +8,7 @@ import perro from '../../fondos/create.jpg'
 export default function CreateDog() {
     const dispatch = useDispatch();
     const temperaments = useSelector(state => state.temperament);
+    const [temperamentError, setErrors] = useState(false);
 
     const [input, setInput] = useState({
         name: '',
@@ -15,9 +16,8 @@ export default function CreateDog() {
         temperament: []
     });
 
-    const [weight, setWeight] = useState([0, 0])
-    const [height, setHeight] = useState([0, 0])
-    console.log(weight);
+    const [weight, setWeight] = useState([null, null])
+    const [height, setHeight] = useState([null, null])
 
     const handleHeight = (e) => {
         if (e.target.name === 'min-height') {
@@ -44,31 +44,42 @@ export default function CreateDog() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        const finalObj = {
-            ...input,
-            weight: weight.join(' - '),
-            height: height.join(' - ')
+        if (input.temperament.length === 0) {
+            setErrors(true);
         }
-        console.log(finalObj);
-        dispatch(postDog(finalObj));
-        alert("Raza creada con exito!");
-        setInput({
-            name: "",
-            life_span: "",
-            temperament: []
-        })
-        setHeight([0, 0])
-        setWeight([0, 0])
+        else {
+            const finalObj = {
+                ...input,
+                weight: weight.join(' - '),
+                height: height.join(' - ')
+            }
+            dispatch(postDog(finalObj));
+            alert("Raza creada con exito!");
+            setInput({
+                name: "",
+                life_span: "",
+                temperament: []
+            })
+            setHeight([null, null])
+            setWeight([null, null])
+        }
     }
 
     function handleSelect(e) {
-        /* console.log(e.target.value); */
+        if (input.temperament.find(t => t.id === e.target.value)) return
         const foundTemperament = temperaments.find((t) => t.id === Number(e.target.value));
-        console.log(foundTemperament);
         const temperamentObj = { name: foundTemperament.name, id: e.target.value };
         setInput({
             ...input,
             temperament: [...input.temperament, temperamentObj]
+        })
+    }
+
+    const deleteTemp = (id) => {
+        console.log(typeof id)
+        setInput({
+            ...input,
+            temperament: input.temperament.filter(t => t.id !== id)
         })
     }
 
@@ -98,6 +109,7 @@ export default function CreateDog() {
                             <div>
                                 <label>Name:</label>
                                 <input
+                                    required
                                     type="text"
                                     value={input.name}
                                     name="name"
@@ -107,7 +119,8 @@ export default function CreateDog() {
                             <div>
                                 <label>Life span:</label>
                                 <input
-                                    type="text"
+                                    required
+                                    type="number"
                                     value={input.life_span}
                                     name="life_span"
                                     onChange={(e) => handleChange(e)}
@@ -116,6 +129,7 @@ export default function CreateDog() {
                             <div>
                                 <label>Min weight (kg):</label>
                                 <input
+                                    required
                                     type="number"
                                     value={weight[0]}
                                     name="min-weight"
@@ -125,6 +139,7 @@ export default function CreateDog() {
                             <div>
                                 <label>Max weight (kg):</label>
                                 <input
+                                    required
                                     type="number"
                                     value={weight[1]}
                                     name="max-weight"
@@ -134,6 +149,7 @@ export default function CreateDog() {
                             <div>
                                 <label>Min height (cm):</label>
                                 <input
+                                    required
                                     type="number"
                                     value={height[0]}
                                     name="min-height"
@@ -143,6 +159,7 @@ export default function CreateDog() {
                             <div>
                                 <label>Max height (cm):</label>
                                 <input
+                                    required
                                     type="number"
                                     value={height[1]}
                                     name="max-height"
@@ -156,7 +173,12 @@ export default function CreateDog() {
                                         return <option value={t.id}>{t.name}</option>
                                     })}
                                 </select>
-                                <ul><p>{input.temperament.map(el => el.name + ", ")}</p></ul>
+                                {temperamentError && input.temperament.length === 0 &&
+                                    <p>At least one temperament is required!</p>
+                                }
+                                <ul className={styles.ul}>{input.temperament.map((el) => {
+                                    return <li>{el.name}<button className={styles.close} onClick={() => deleteTemp(el.id)}>❌</button></li>;
+                                })}</ul>
                             </div>
                             <div className={styles.btn}>
                                 <button className={styles.crear} type="submit">
