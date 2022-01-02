@@ -4,10 +4,10 @@ import { useDispatch } from "react-redux";
 import { getDogName } from "../../actions";
 import styles from './SearchBar.module.css'
 
-export default function SearchBar() {
+export default function SearchBar({name, setName}) {
 
     const dispatch = useDispatch();
-    const [name, setName] = useState("");
+    
 
     function handleInputChange(e) {
         e.preventDefault();

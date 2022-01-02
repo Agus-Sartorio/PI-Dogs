@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTemperaments, postDog } from '../../actions/index';
 import styles from './CreateDog.module.css';
-import perro from '../../fondos/create.jpg'
+import perro from '../../fondos/create.jpg';
+import { motion } from "framer-motion"
 
 export default function CreateDog() {
     const dispatch = useDispatch();
@@ -98,7 +99,11 @@ export default function CreateDog() {
                     <Link to="./dog" /* className={styles.recargar} */><button className={styles.recargar}>Create Breed</button></Link>
                 </div>
             </div>
-            <div className={styles.todo}>
+            <motion.div className={styles.todo}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
+            >
                 <div className={styles.formulario}>
                     <div className={styles.image}>
                         <img src={perro} alt='img' />
@@ -188,7 +193,7 @@ export default function CreateDog() {
                         </form>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </div>
     )
 }

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import styles from './DogDetail.module.css'
+import { motion } from "framer-motion"
 
 export default function DogDetail({ dogDetail, temperament, setShow }) {
     const { name, image, weight, height, life_span } = dogDetail;
@@ -29,7 +30,11 @@ export default function DogDetail({ dogDetail, temperament, setShow }) {
     }
 
     return (
-        <div ref={overlay} onClick={handleOverlayClick} className={styles.overlay}>
+        <motion.div ref={overlay} onClick={handleOverlayClick} className={styles.overlay}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
+        >
             <div className={styles.modal}>
                 <button onClick={handleClick} className={styles.close}>❌</button>
                 <div className={styles.img}>
@@ -50,6 +55,6 @@ export default function DogDetail({ dogDetail, temperament, setShow }) {
                     <p>{height} cm</p>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }

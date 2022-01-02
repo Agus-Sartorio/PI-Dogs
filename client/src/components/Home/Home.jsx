@@ -20,9 +20,10 @@ export default function Home() {
     const allTemperaments = useSelector((state) => state.temperament);
     const [orden, setOrden] = useState();
     const [page, setPage] = useState(0);
+    const [name, setName] = useState("");
     const breedsPerPage = 10;
     const pagesVisited = page * breedsPerPage;
-    const displayBreeds = allDogs.slice(pagesVisited, pagesVisited + breedsPerPage).map(
+    const displayBreeds = allDogs.filter(d => d.name.toLowerCase().includes(name.toLowerCase())).slice(pagesVisited, pagesVisited + breedsPerPage).map(
         (d) => {
 
             return <Card dogDetail={d} key={d.id} />
@@ -64,7 +65,7 @@ export default function Home() {
         setOrden(`Ordenado ${e.target.value}`);
     }
 
-    const pageCount = Math.ceil(allDogs.length / breedsPerPage);
+    const pageCount = Math.ceil(allDogs.filter(d => d.name.toLowerCase().includes(name.toLowerCase())).length / breedsPerPage);
     const changePage = ({ selected }) => {
         setPage(selected)
     }
@@ -81,7 +82,10 @@ export default function Home() {
                 </div>
             </div>
             <div className={styles.div2}>
-                <SearchBar />
+                <SearchBar 
+                name={name}
+                setName={setName}
+                />
                 <div className={styles.fijo}>
                     <div className={styles.temperamentos}>
                         <p className={styles.filtro}>Filter By Origin</p>
@@ -133,7 +137,7 @@ export default function Home() {
                     {allDogs.length > 0 && displayBreeds}
                 </div>
             </div>
-            {allDogs.length > 0 && 
+            {allDogs.length > 10 && 
             <div className={styles.pagination}>
                 <ReactPaginate
                     previousLabel={'Previous'}

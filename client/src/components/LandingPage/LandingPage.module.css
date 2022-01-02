@@ -24,6 +24,7 @@
     font-weight: bold;
     font-family: 'Nunito', sans-serif;
     color: white;
+    transition: background-color 0.5s;  
 }
 
 .boton:hover{
