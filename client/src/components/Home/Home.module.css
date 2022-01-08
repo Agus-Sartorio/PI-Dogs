@@ -21,7 +21,10 @@
 }
 
 .dogi{
-    margin-left: 60px;
+    margin-left: 20px;
+    letter-spacing: 2px;
+    color: black;
+    cursor: default;
 }
 
 .divbotones{

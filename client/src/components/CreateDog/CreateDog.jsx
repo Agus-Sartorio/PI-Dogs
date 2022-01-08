@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTemperaments, postDog } from '../../actions/index';
 import styles from './CreateDog.module.css';
@@ -95,8 +95,8 @@ export default function CreateDog() {
                 <h1 className={styles.dogi}>DOGIPEDIA🐾</h1>
 
                 <div className={styles.divbotones}>
-                    <Link to="/home"><button className={styles.recargar}>Home</button></Link>
-                    <Link to="./dog" /* className={styles.recargar} */><button className={styles.recargar}>Create Breed</button></Link>
+                    <NavLink to="/home"><button className={styles.recargar}>Home</button></NavLink>
+                    <NavLink to="./dog" /* className={styles.recargar} */><button className={styles.recargar}>Create Breed</button></NavLink>
                 </div>
             </div>
             <motion.div className={styles.todo}
@@ -127,6 +127,7 @@ export default function CreateDog() {
                                     required
                                     type="number"
                                     value={input.life_span}
+                                    min='1'
                                     name="life_span"
                                     onChange={(e) => handleChange(e)}
                                 />
@@ -137,6 +138,7 @@ export default function CreateDog() {
                                     required
                                     type="number"
                                     value={weight[0]}
+                                    min='1'
                                     name="min-weight"
                                     onChange={handleWeight}
                                 />
@@ -147,6 +149,7 @@ export default function CreateDog() {
                                     required
                                     type="number"
                                     value={weight[1]}
+                                    min='1'
                                     name="max-weight"
                                     onChange={handleWeight}
                                 />
@@ -157,6 +160,7 @@ export default function CreateDog() {
                                     required
                                     type="number"
                                     value={height[0]}
+                                    min='1'
                                     name="min-height"
                                     onChange={handleHeight}
                                 />
@@ -167,6 +171,7 @@ export default function CreateDog() {
                                     required
                                     type="number"
                                     value={height[1]}
+                                    min='1'
                                     name="max-height"
                                     onChange={handleHeight}
                                 />

@@ -1,11 +1,11 @@
 .card{
-    margin: 30px;
     display: flex;
+    margin: 30px;
     border-radius: 10px;
     overflow: hidden;
     width: 505px;
-    height: 250px;
-    background: #32de84;
+    min-height: 250px;
+    background-size: cover;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
     cursor: pointer;
     transition: transform 250ms ease;
@@ -16,7 +16,8 @@
 }
 
 .temperaments{
-    display:inline;
+    display:inline-block;
+    margin: 5px 20px;
 }
 
 .temperament{
@@ -36,19 +37,21 @@
 }
 
 .info{
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    flex: 1;
+    color: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    padding: 20px;
-    width: 50%;
-    /* height: 100%; */
+    align-items: center;
+    justify-content: center;
 }
 
 .dogName{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
     margin: 0;
+    font-size: 40px;
+    margin-bottom: 10px;
+    letter-spacing: 1.5px;
 }
 
 .link{

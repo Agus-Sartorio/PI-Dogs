@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import ReactPaginate from 'react-paginate';
 import { getDogs, getTemperaments, filterDogsByTemperament, filterCreated, orderByName, orderByWeight } from '../../actions';
 import Card from "../Card/Card"
@@ -78,13 +78,13 @@ export default function Home() {
 
                 <div className={styles.divbotones}>
                     <button className={styles.recargar} onClick={handleClick}>Reload Dogs</button>
-                    <Link to="./dog" /* className={styles.recargar} */><button className={styles.recargar}>Create Breed</button></Link>
+                    <NavLink to="./dog" /* className={styles.recargar} */><button className={styles.recargar}>Create Breed</button></NavLink>
                 </div>
             </div>
             <div className={styles.div2}>
-                <SearchBar 
-                name={name}
-                setName={setName}
+                <SearchBar
+                    name={name}
+                    setName={setName}
                 />
                 <div className={styles.fijo}>
                     <div className={styles.temperamentos}>
@@ -120,14 +120,14 @@ export default function Home() {
                     </div>
                 </div>
                 {
-                    !allDogs.length && !allDogsCopy.length  && 
+                    !allDogs.length && !allDogsCopy.length &&
                     <div className={styles.load}>
                         <img src={loader} alt="" />
                         <p>Loading...</p>
                     </div>
                 }
                 {
-                    !allDogs.length && allDogsCopy.length > 0 && 
+                    !allDogs.length && allDogsCopy.length > 0 &&
                     <div>
                         <h2>There is no breed to show \ (o_o) / </h2>
                         <img className={styles.dogError} src={dogError} alt="" />
@@ -137,18 +137,18 @@ export default function Home() {
                     {allDogs.length > 0 && displayBreeds}
                 </div>
             </div>
-            {allDogs.length > 10 && 
-            <div className={styles.pagination}>
-                <ReactPaginate
-                    previousLabel={'Previous'}
-                    nextLabel={'Next'}
-                    pageCount={pageCount}
-                    onPageChange={changePage}
-                    containerClassName={styles.paginationButtons}
-                    previousLinkClassName={styles.previousButton}
-                    activeClassName={styles.paginationActive}
-                />
-            </div>}
+            {allDogs.length > 10 &&
+                <div className={styles.pagination}>
+                    <ReactPaginate
+                        previousLabel={'Previous'}
+                        nextLabel={'Next'}
+                        pageCount={pageCount}
+                        onPageChange={changePage}
+                        containerClassName={styles.paginationButtons}
+                        previousLinkClassName={styles.previousButton}
+                        activeClassName={styles.paginationActive}
+                    />
+                </div>}
         </div>
     )
 }

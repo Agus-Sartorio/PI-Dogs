@@ -2,7 +2,7 @@ const initialState = {
     dogs: [],
     dogsCopy: [],
     temperament: [],
-    detail : {},
+    detail: {},
 }
 
 function rootReducer(state = initialState, action) {
@@ -58,23 +58,16 @@ function rootReducer(state = initialState, action) {
                 dogs: sortedArr
             }
         case 'ORDER_BY_WEIGHT':
-            let sortedArr2 = action.payload === "asc" ? state.dogs.sort(function (a, b) {
-                if (a.weight > b.weight) {
-                    return 1;
-                }
-                if (b.weight > a.weight) {
-                    return -1;
-                }
-                return 0;
-            }) :
-                state.dogs.sort(function (a, b) {
-                    if (a.weight > b.weight) {
-                        return -1;
-                    }
-                    if (b.weight > a.weight) {
-                        return 1;
-                    }
-                    return 0;
+            const sortedArr2 = action.payload === 'asc' ?
+                state.dogs.sort((a, b) => {
+                    const weightOne = Number(a.weight?.split(" - ")[0])
+                    const weightTwo = Number(b.weight?.split(" - ")[0])
+                    return weightOne - weightTwo
+                }) :
+                state.dogs.sort((a, b) => {
+                    const weightOne = Number(a.weight?.split(" - ")[0])
+                    const weightTwo = Number(b.weight?.split(" - ")[0])
+                    return weightTwo - weightOne
                 })
             return {
                 ...state,
@@ -91,7 +84,7 @@ function rootReducer(state = initialState, action) {
             }
         case 'GET_DETAIL':
             return {
-                ...state,  
+                ...state,
                 detail: action.payload
             }
         default:

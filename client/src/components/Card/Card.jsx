@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom"
+import React, { useState, useRef, useEffect } from "react";
 import styles from './Card.module.css';
 import DogDetail from '../DogDetail/DogDetail'
 import { motion } from "framer-motion"
 
 export default function Card({ dogDetail }) {
+
+    const div = useRef();
 
     const [show, setShow] = useState(false);
 
@@ -14,16 +15,18 @@ export default function Card({ dogDetail }) {
 
     let temperament = dogDetail.temperament ? dogDetail.temperament.split(',') : dogDetail.Temperaments?.map(e => e.name)
     const { name, image, weight } = dogDetail;
+
+    useEffect(() => {
+        div.current.style.backgroundImage = `url(${image})`;    
+    }, [image])
+
     return (
         <>
-            <motion.div onClick={handleClick} className={styles.card}
+            <motion.div onClick={handleClick} ref={div} className={styles.card}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
             >
-                <div className={styles.divImg}>
-                    <img className={styles.cardImg} src={image} alt={name} width="400px" height="250px" />
-                </div>
                 <div className={styles.info}>
                     <div>
                         <h2 className={styles.dogName}>
@@ -31,10 +34,10 @@ export default function Card({ dogDetail }) {
                         </h2>
                     </div>
                     <div className={styles.cont}>
-                        <h5 className={styles.temperament}>Temperaments</h5>
+                        <h5 className={styles.temperament}>Temperaments {/* <i className="far fa-heart"></i> */}</h5>
                         {
                             temperament?.map(el => {
-                                return <p className={styles.temperaments}>{el + ' '}</p>
+                                return <p key={el} className={styles.temperaments}>{el + ' '}</p>
                             })
                         }
                         <div className={styles.peso}>

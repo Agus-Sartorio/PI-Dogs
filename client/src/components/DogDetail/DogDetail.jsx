@@ -36,7 +36,7 @@ export default function DogDetail({ dogDetail, temperament, setShow }) {
             transition={{ duration: 0.4 }}
         >
             <div className={styles.modal}>
-                <button onClick={handleClick} className={styles.close}>❌</button>
+                <button onClick={handleClick} className={styles.close}><i class="fas fa-times"></i></button>
                 <div className={styles.img}>
                     <img src={image} alt={name} width="500px" height="700px" />
                 </div>

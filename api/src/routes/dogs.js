@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
     let dogName = totalDogs.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()));
     dogName.length ?
       res.send(dogName) :
-      res.status(400).send("Perro no encontrado")
+      res.status(404).send("Perro no encontrado")
   } else {
     res.send(totalDogs);
   }
