@@ -10,6 +10,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import dogError from '../../fondos/fire.png';
 import loader from '../../fondos/loader.png'
 import styles from './Home.module.css'
+import { motion } from "framer-motion"
 
 export default function Home() {
 
@@ -127,17 +128,22 @@ export default function Home() {
                     </div>
                 }
                 {
-                    !allDogs.length && allDogsCopy.length > 0 &&
-                    <div>
+                    allDogs.length > 0 && !displayBreeds.length &&
+                    <motion.div
+                        initial={{ opacity: 0 }}    
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.4 }}
+                        className={styles.nada}
+                        >
                         <h2>There is no breed to show \ (o_o) / </h2>
                         <img className={styles.dogError} src={dogError} alt="" />
-                    </div>
+                    </motion.div>
                 }
                 <div className={styles.perros}>
                     {allDogs.length > 0 && displayBreeds}
                 </div>
             </div>
-            {allDogs.length > 10 &&
+            {allDogs.length > 10 && displayBreeds.length > 0 &&
                 <div className={styles.pagination}>
                     <ReactPaginate
                         previousLabel={'Previous'}

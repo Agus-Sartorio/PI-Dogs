@@ -187,7 +187,7 @@ export default function CreateDog() {
                                     <p>At least one temperament is required!</p>
                                 }
                                 <ul className={styles.ul}>{input.temperament.map((el) => {
-                                    return <li>{el.name}<button className={styles.close} onClick={() => deleteTemp(el.id)}>❌</button></li>;
+                                    return <li>{el.name}<button className={styles.close} onClick={() => deleteTemp(el.id)}><i class="fas fa-times"></i></button></li>;
                                 })}</ul>
                             </div>
                             <div className={styles.btn}>
