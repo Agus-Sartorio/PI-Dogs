@@ -1,182 +1,278 @@
-.perros{
-    display:flex;
-    flex-direction:row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin-left: 200px;
-    border-radius:8px;
-    margin-bottom: 70px;
+.perros {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-left: 200px;
+  border-radius: 8px;
+  margin-bottom: 70px;
 }
 
-.divFijo{
-    display:flex;
-    min-width:100%;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 3px solid #32de84;
-    position: fixed;
-    top: 0;
-    background-color:white;
-    z-index: 1;
+.divFijo {
+  display: flex;
+  min-width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid #32de84;
+  position: fixed;
+  top: 0;
+  background-color: white;
+  z-index: 1;
 }
 
-.dogi{
-    margin-left: 20px;
-    letter-spacing: 2px;
-    color: black;
-    cursor: default;
+.dogi {
+  margin-left: 20px;
+  letter-spacing: 2px;
+  color: black;
+  cursor: default;
 }
 
-.divbotones{
-    margin-right: 60px;
+.divbotones {
+  margin-right: 60px;
 }
 
-.div2{
-    margin-top: 125px;
+.div2 {
+  margin-top: 125px;
+  position: relative;
 }
 
-.recargar{
-    margin-right: 15px;
-    padding: 8px 12px;
-    border-radius: 15px;
-    background-color: transparent;
-    border: 2px solid #32de84;
-    font-family: 'Nunito', sans-serif;
-    font-weight: bold;
-    font-size: 15px;
-    transition: background-color 0.5s;  
+.recargar {
+  margin-right: 15px;
+  padding: 8px 12px;
+  border-radius: 15px;
+  background-color: transparent;
+  border: 2px solid #32de84;
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  transition: background-color 0.5s;
 }
 
-.recargar:hover{
-    background-color: #32de84;
+.recargar:hover {
+  background-color: #32de84;
 }
 
-.filtros{
-    margin-top:25px;
-    display: flex;
-    justify-content: space-around;
+.filtros {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-around;
 }
 
-.temperamentos{
-    display: flex;
-    flex-direction: column;
-    /* width: fit-content; */
-    border: 2px solid #32de84;
-    padding: 10px 15px;
-    border-radius:9px;
-    max-width: 220px;
-    margin-top: 40px;
-    margin-left: 15px;
+.temperamentos {
+  display: flex;
+  flex-direction: column;
+  /* width: fit-content; */
+  border: 2px solid #32de84;
+  padding: 10px 15px;
+  border-radius: 9px;
+  max-width: 220px;
+  margin-top: 40px;
+  margin-left: 15px;
 }
 
-.fijo{
-    position:fixed;
-    top:90px
+.fijo {
+  position: fixed;
+  top: 91px;
+  transition: transform 300ms;
+  background-color: white;
+  transform-origin: left;
+  z-index: 1;
+  padding-right: 20px;
+  padding-bottom: 20px;
 }
 
-.filtro{
-    font-weight: bold;
-    font-size: 20px;
+.fijo > * {
+  opacity: 1;
+  transition: opacity 300ms;
 }
 
-.select{
-    background-color:transparent;
-    font-family: 'Nunito', sans-serif;
-    border-radius:5px;
-    border-color: #32de84;
+.hidden {
+  transform: scaleX(0.2);
 }
 
-.select2{
-    margin-top: 15px;
-    background-color:transparent;
-    font-family: 'Nunito', sans-serif;
-    border-radius:5px;
-    border-color: #32de84;
+.hidden > * {
+  opacity: 0;
+  pointer-events: none;
 }
 
-.clear{
-    margin-top:15px;
-    background-color:rgb(51, 51, 51);
-    border-radius: 5px;
-    padding: 8px 8px;
-    font-family: 'Nunito', sans-serif;
-    color:#32de84;
-    border: none;
-    transition: background-color 0.5s;  
+.menuBtn {
+  position: fixed;
+  top: 100px;
+  left: 10px;
+  z-index: 2;
+  display: none;
+  width: 25px;
+  height: 25px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-.clear:hover{
-    background-color:black;
-    /* font-weight: bold; */
+.menuBtn.open {
+  margin-left: 3px;
 }
 
-.paginationButtons{
-    width: 80%;
-    height: 40px;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.menuBtn.open .icon2:after {
+  opacity: 0;
 }
 
-.paginationButtons a{
-    padding: 10px;
-    margin: 8px;
-    border-radius: 5px;
-    border: 1px solid #32de84;
-    cursor: pointer;
-    transition: background-color 0.5s;  
+.menuBtn.open .icon1:before {
+  transform: rotate(45deg) translateY(5px);
 }
 
-.paginationButtons a:hover{
-    background-color: #32de84;
+.menuBtn.open .icon1:after {
+  transform: rotate(315deg) translate(-1px, -5px);
 }
 
-.paginationActive a{
-    background-color: #32de84;
+.icon1:after,
+.icon2:after,
+.icon1:before {
+  content: "";
+  background-color: black;
+  width: 24px;
+  height: 3px;
+  display: block;
+  transition: all 200ms cubic-bezier(0, 0.82, 1, 1.22);
 }
 
-.pagination{
-    display: flex;
-    align-items: center;
-    margin-left:350px
+.icon2:after {
+  margin-top: 3px;
 }
 
-.dogError{
-    border-radius: 5px;
+.icon1:before {
+  margin-bottom: 3px;
 }
 
-.load{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 200px;
+.filtro {
+  font-weight: bold;
+  font-size: 20px;
 }
 
-.load img{
-    width: 100px;
-    height: 50px;
-    animation: spinning 4s infinite linear;
+.select {
+  background-color: transparent;
+  font-family: "Nunito", sans-serif;
+  border-radius: 5px;
+  border-color: #32de84;
 }
 
-@keyframes spinning{
-    from{
-        transform: rotate(0deg);
-    } to{
-        transform: rotate(360deg);
-    }
+.select2 {
+  margin-top: 15px;
+  background-color: transparent;
+  font-family: "Nunito", sans-serif;
+  border-radius: 5px;
+  border-color: #32de84;
 }
 
-.load p{
-    font-size: 20px;
-    font-weight: bold;
+.clear {
+  margin-top: 15px;
+  background-color: rgb(51, 51, 51);
+  border-radius: 5px;
+  padding: 8px 8px;
+  font-family: "Nunito", sans-serif;
+  color: #32de84;
+  border: none;
+  transition: background-color 0.5s;
 }
 
-.nada{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 175px;
-    margin-top: 25px;
+.clear:hover {
+  background-color: black;
+  /* font-weight: bold; */
+}
+
+.paginationButtons {
+  width: 80%;
+  height: 40px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.paginationButtons a {
+  padding: 10px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid #32de84;
+  cursor: pointer;
+  transition: background-color 0.5s;
+  display: inline-block;
+}
+
+.paginationButtons a:hover {
+  background-color: #32de84;
+}
+
+.paginationActive a {
+  background-color: #32de84;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  margin-left: 350px;
+}
+
+.dogError {
+  border-radius: 5px;
+}
+
+.load {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 200px;
+}
+
+.load img {
+  width: 100px;
+  height: 50px;
+  animation: spinning 4s infinite linear;
+}
+
+@keyframes spinning {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.load p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nada {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 175px;
+  margin-top: 25px;
+}
+
+@media (max-width: 860px) {
+  .menuBtn {
+    display: block;
+  }
+
+  .pagination {
+    margin-left: 75px;
+  }
+
+  .perros {
+    margin-left: 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dogi span {
+    display: none;
+  }
+
+  .divbotones {
+    margin-right: 0;
+  }
 }

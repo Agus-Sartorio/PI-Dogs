@@ -17,15 +17,15 @@ export default function Card({ dogDetail }) {
     const { name, image, weight } = dogDetail;
 
     useEffect(() => {
-        div.current.style.backgroundImage = `url(${image})`;    
+        div.current.style.backgroundImage = `url(${image})`;
     }, [image])
 
     return (
         <>
             <motion.div onClick={handleClick} ref={div} className={styles.card}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4 }}
             >
                 <div className={styles.info}>
                     <div>
