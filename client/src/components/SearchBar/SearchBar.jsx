@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getDogName } from "../../actions";
 import styles from "./SearchBar.module.css";
