@@ -1,8 +1,10 @@
 import axios from "axios";
 
+const { REACT_APP_SERVER } = process.env;
+
 export function getDogs() {
   return async function (dispatch) {
-    var json = await axios.get("http://localhost:3001/dogs", {});
+    var json = await axios.get(`${REACT_APP_SERVER}/dogs`, {});
     return dispatch({
       type: "GET_DOGS",
       payload: json.data,
@@ -12,7 +14,7 @@ export function getDogs() {
 
 export function getTemperaments() {
   return async function (dispatch) {
-    var json = await axios.get("http://localhost:3001/temperament", {});
+    var json = await axios.get(`${REACT_APP_SERVER}/temperament`, {});
     return dispatch({
       type: "GET_TEMPERAMENTS",
       payload: json.data,
@@ -51,7 +53,7 @@ export function orderByWeight(payload) {
 export function getDogName(name) {
   return async function (dispatch) {
     try {
-      let json = await axios.get("http://localhost:3001/dogs?name=" + name);
+      let json = await axios.get(`${REACT_APP_SERVER}/dogs?name=` + name);
       return dispatch({
         type: "GET_DOG_NAME",
         payload: json.data,
@@ -67,7 +69,7 @@ export function getDogName(name) {
 
 export function postDog(payload) {
   return async function (dispatch) {
-    const response = await axios.post("http://localhost:3001/dog", payload);
+    const response = await axios.post(`${REACT_APP_SERVER}/dog`, payload);
     return response;
   };
 }
@@ -75,7 +77,7 @@ export function postDog(payload) {
 export function getDetail(id) {
   return async function (dispatch) {
     try {
-      const json = await axios.get("http://localhost:3001/dogs/" + id);
+      const json = await axios.get(`${REACT_APP_SERVER}/dogs/` + id);
       return dispatch({
         type: "GET_DETAIL",
         payload: json.data,
